@@ -74,6 +74,12 @@ How to run
 ----
 Use STM32 ST-LINK Utility.
 
+Console Input/Output
+----
+"USART2" is assigned as standard input/output port.<br/>
+On STM32F4 Discovery board, 'PA3' and 'PA2' is assigned as "USART2" (PA2=USART2_TX / PA3=USART2_RX).<br/>
+You can connect level conversion board to that pins.<br/>
+
 License
 ----
 MIT License
