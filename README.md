@@ -31,6 +31,35 @@ commands:
     $ cd ..
     $ git clone https://github.com/crimsonwoods/mirb-stm32f4discovery.git
 
+Edit 'build_config.rb'
+----
+edit your 'build_config.rb' to build 'libmruby'.<br/>
+append cross-build settings.<br/>
+like this:
+
+    MRuby::CrossBuild.new('stm32f407') do |conf|
+      toolchain :gcc
+    
+      conf.bins = %w() # target is just only 'libmruby.a'.
+    
+      conf.cc do |cc|
+        cc.command = 'arm-none-eabi-gcc'
+        cc.flags = %w(
+          -MD -Os
+          -mthumb -mcpu=cortex-m3 -nostdlib -mfloat-abi=softfp -mfpu=fpv4-sp-d16
+          -fsigned-char -fno-inline -ffunction-sections -mlittle-endian)
+        cc.defines = %w(
+          MRB_HEAP_PAGE_SIZE=256
+          POOL_PAGE_SIZE=1000
+          MRB_STR_BUF_MIN_SIZE=32
+          MRB_PARSER_BUF_SIZE=256)
+      end
+    
+      conf.archiver do |ar|
+        ar.command = 'arm-none-eabi-ar'
+      end
+    end
+
 How to build
 ----
 
