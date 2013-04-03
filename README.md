@@ -1,6 +1,8 @@
 mirb-stm32f4discovery
 ====
 
+This project is __experimental__ implementation.
+
 What's 'mruby'
 ----
 See this: https://github.com/mruby/mruby
@@ -36,6 +38,12 @@ commands:
 
     $ cd mirb-stm32f4discovery
     $ make CROSS_COMPILE=arm-none-eabi-
+
+if build succeeded, you will get an executable binary file 'build/mirb.bin'.
+
+How to run
+----
+Use STM32 ST-LINK Utility.
 
 License
 ----
